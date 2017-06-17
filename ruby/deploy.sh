@@ -33,16 +33,16 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   echo ===== Bundle Install =====
   ~/.local/ruby/bin/bundle install
 
-  # echo ===== Copy my.cnf  =====
-  # if [ -f /etc/mysql/my.cnf ]; then
-  # sudo rm /etc/mysql/my.cnf
-  # fi
+  echo ===== Copy my.cnf  =====
+    if [ -f /etc/my.cnf ]; then
+    sudo rm /etc/my.cnf
+  fi
 
-  # sudo cp ../config/my.cnf /etc/mysql/my.cnf
-  # sudo chmod 0400 /etc/mysql/my.cnf
+  sudo cp config/my.cnf /etc/my.cnf
+  sudo chmod 0400 /etc/my.cnf
 
   echo ===== Restart MySQL =====
-  sudo service mysql restart
+  sudo service mysqld restart
 
   # echo ===== Copy nginx.conf  =====
   # if [ -f /etc/nginx/nginx.conf ]; then
