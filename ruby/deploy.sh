@@ -55,7 +55,7 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   sudo /etc/init.d/supervisord stop
 
   # unicorn 死なないみたいなので...
-  ps aux | grep 'unicorn' | awk '{print $2}' | xargs kill -9
+  pkill -QUIT -f unicorn
 
   sudo /etc/init.d/supervisord start
 
