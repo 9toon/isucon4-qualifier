@@ -3,6 +3,7 @@ require 'digest/sha2'
 require 'mysql2-cs-bind'
 require 'rack-flash'
 require 'json'
+require 'rack'
 require 'rack/session/redis'
 
 module Isucon4
