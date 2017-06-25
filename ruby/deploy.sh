@@ -19,11 +19,11 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
 
   cd ruby
 
-  # echo ===== Rotate log files =====
-  # if sudo test -f "/var/lib/mysql/mysqld-slow.log"; then
-  # echo == Roatate mysqld-slow.log ==
-  # sudo mv /var/lib/mysql/mysqld-slow.log /var/lib/mysql/mysqld-slow.log.$(date "+%Y%m%d_%H%M%S").$CURRENT_COMMIT
-  # fi
+  echo ===== Rotate log files =====
+  if sudo test -f "/var/lib/mysql/mysqld-slow.log"; then
+    echo == Roatate mysqld-slow.log ==
+    sudo mv /var/lib/mysql/mysqld-slow.log /var/lib/mysql/mysqld-slow.log.$(date "+%Y%m%d_%H%M%S").$CURRENT_COMMIT
+  fi
 
   # if sudo test -f "/var/log/nginx/access.log"; then
   # echo == Roatate access.log ==
@@ -34,7 +34,7 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   ~/.local/ruby/bin/bundle install
 
   echo ===== Copy my.cnf  =====
-    if [ -f /etc/my.cnf ]; then
+  if [ -f /etc/my.cnf ]; then
     sudo rm /etc/my.cnf
   fi
 
