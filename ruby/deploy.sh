@@ -77,7 +77,7 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   # unicorn 死なないみたいなので...
   pkill -QUIT -f unicorn
 
-  sudo supervisorctl reload
+  sudo /etc/init.d/supervisord start
 
   echo ===== Copy init.sh  =====
   if [ -f /home/isucon/init.sh ]; then
