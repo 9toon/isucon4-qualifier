@@ -13,7 +13,7 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
 
   echo ===== Move... =====
 
-  # CURRENT_COMMIT=`git rev-parse HEAD`
+  CURRENT_COMMIT=`git rev-parse HEAD`
 
   git pull --rebase origin master
 
