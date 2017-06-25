@@ -33,6 +33,14 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   echo ===== Bundle Install =====
   ~/.local/ruby/bin/bundle install
 
+  echo ===== Copy sysctl.conf  =====
+  if [ -f /etc/sysctl.conf ]; then
+    sudo rm /etc/sysctl.conf
+  fi
+
+  sudo cp config/sysctl.conf /etc/sysctl.conf
+  sudo chmod 0644 /etc/sysctl.conf
+
   echo ===== Copy my.cnf  =====
   if [ -f /etc/my.cnf ]; then
     sudo rm /etc/my.cnf
