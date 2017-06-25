@@ -4,7 +4,7 @@ working_directory @dir
 # stderr_path File.join(@dir, "log/unicorn.stderr.log")
 # stdout_path File.join(@dir, "log/unicorn.stdout.log")
 
-worker_processes 4
+worker_processes 10
 preload_app true
 
 listen "/dev/shm/app.sock"
