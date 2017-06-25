@@ -70,6 +70,14 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
 
   sudo /etc/init.d/supervisord start
 
+  echo ===== Copy init.sh  =====
+  if [ -f /home/isucon/init.sh ]; then
+    rm /home/isucon/init.sh
+  fi
+
+  cp config/init.sh /home/isucon/init.sh
+  chmod 755 /home/isucon/init.sh
+
   echo ===== FINISHED =====
 
   exit
