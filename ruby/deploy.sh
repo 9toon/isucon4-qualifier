@@ -54,6 +54,14 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   echo ===== Restart nginx =====
   sudo /etc/init.d/nginx restart
 
+  echo ===== Copy supervisord.conf  =====
+  if [ -f /etc/supervisord.conf ]; then
+    sudo rm /etc/supervisord.conf
+  fi
+
+  sudo cp config/supervisord.conf /etc/supervisord.conf
+  sudo chmod 0644 /etc/supervisord.conf
+
   echo ===== Restart supervisord =====
   sudo /etc/init.d/supervisord stop
 
