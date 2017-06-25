@@ -60,4 +60,7 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   sudo /etc/init.d/supervisord start
 
   echo ===== FINISHED =====
+
+  exit
+  exit
 SHELL
