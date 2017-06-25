@@ -54,6 +54,15 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   echo ===== Restart nginx =====
   sudo /etc/init.d/nginx restart
 
+  echo ===== Copy redis.conf  =====
+  if [ -f /etc/redis.conf ]; then
+    sudo rm /etc/redis.conf
+  fi
+
+  sudo cp config/redis.conf /etc/redis.conf
+  sudo chmod 0640 /etc/redis.conf
+  sudo chown isucon:isucon /etc/redis.conf
+
   echo ===== Copy supervisord.conf  =====
   if [ -f /etc/supervisord.conf ]; then
     sudo rm /etc/supervisord.conf
