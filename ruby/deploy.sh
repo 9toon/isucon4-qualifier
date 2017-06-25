@@ -41,6 +41,8 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   sudo cp config/sysctl.conf /etc/sysctl.conf
   sudo chmod 0644 /etc/sysctl.conf
 
+  sudo sysctl -p
+
   echo ===== Copy my.cnf  =====
   if [ -f /etc/my.cnf ]; then
     sudo rm /etc/my.cnf
