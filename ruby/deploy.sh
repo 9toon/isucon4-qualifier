@@ -52,7 +52,12 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   # sudo cp ../config/nginx.conf /etc/nginx/nginx.conf
 
   echo ===== Restart supervisord =====
-  sudo /etc/init.d/supervisord restart
+  sudo /etc/init.d/supervisord stop
+
+  # unicorn 死なないみたいなので...
+  ps aux | grep 'unicorn' | awk '{print $2}' | xargs kill -9
+
+  sudo /etc/init.d/supervisord start
 
   echo ===== FINISHED =====
 SHELL
