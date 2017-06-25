@@ -25,10 +25,10 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
     sudo mv /var/lib/mysql/mysqld-slow.log /var/lib/mysql/mysqld-slow.log.$(date "+%Y%m%d_%H%M%S").$CURRENT_COMMIT
   fi
 
-  # if sudo test -f "/var/log/nginx/access.log"; then
-  # echo == Roatate access.log ==
-  # sudo mv /var/log/nginx/access.log /var/log/nginx/access.log.$(date "+%Y%m%d_%H%M%S").$CURRENT_COMMIT
-  # fi
+  if sudo test -f "/var/log/nginx/access.log"; then
+    echo == Roatate access.log ==
+    sudo mv /var/log/nginx/access.log /var/log/nginx/access.log.$(date "+%Y%m%d_%H%M%S").$CURRENT_COMMIT
+  fi
 
   echo ===== Bundle Install =====
   ~/.local/ruby/bin/bundle install
@@ -44,12 +44,12 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
   echo ===== Restart MySQL =====
   sudo service mysqld restart
 
-  # echo ===== Copy nginx.conf  =====
-  # if [ -f /etc/nginx/nginx.conf ]; then
-  # sudo rm /etc/nginx/nginx.conf
-  # fi
+  echo ===== Copy nginx.conf  =====
+    if [ -f /etc/nginx/nginx.conf ]; then
+    sudo rm /etc/nginx/nginx.conf
+  fi
 
-  # sudo cp ../config/nginx.conf /etc/nginx/nginx.conf
+  sudo cp ../config/nginx.conf /etc/nginx/nginx.conf
 
   echo ===== Restart supervisord =====
   sudo /etc/init.d/supervisord stop
