@@ -49,7 +49,7 @@ ssh -t -t -i ~/.ssh/isucon4-qualifier.pem ec2-user@$IPADDR sh <<SHELL
     sudo rm /etc/nginx/nginx.conf
   fi
 
-  sudo cp ../config/nginx.conf /etc/nginx/nginx.conf
+  sudo cp config/nginx.conf /etc/nginx/nginx.conf
 
   echo ===== Restart supervisord =====
   sudo /etc/init.d/supervisord stop
