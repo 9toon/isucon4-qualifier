@@ -115,7 +115,7 @@ module Isucon4
           end
         end
 
-        ips
+        ips.shuffle
       end
 
       def locked_users
@@ -135,7 +135,7 @@ module Isucon4
           end
         end
 
-        user_ids
+        user_ids.shuffle
       end
     end
 
