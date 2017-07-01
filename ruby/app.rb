@@ -157,7 +157,7 @@ module Isucon4
         else
           flash[:notice] = "Wrong username or password"
         end
-        redirect '/'
+        redirect "/?notice=#{flash[:notice]}"
       end
     end
 
